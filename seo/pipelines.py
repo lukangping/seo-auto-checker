@@ -7,7 +7,7 @@ class SeoVerifyPipeline(object):
 	expected_seos = {}
 
 	def __init__(self):
-		reader = csv.reader(open("/Users/kplu/workspace/casa/iam-ba/seo/seo/csv/#353.csv"), delimiter=";")
+		reader = csv.reader(open("seo/csv/demo.csv"), delimiter=";")
 		for url,title,h1,desc in reader:
 			seo = ExpectedSeo(url, title, h1, desc)
 			self.expected_seos[str(url)] = seo
