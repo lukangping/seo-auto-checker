@@ -29,6 +29,7 @@ class SeoSpider(scrapy.Spider):
 		# print item["title"]
 		# print item["h1"]
 
-		# if response.xpath('//meta[@name="description"]'):
-			# item["desc"]=str(response.xpath('//meta[@name="description"]/@content').extract()[0])
+		if response.xpath('//meta[@name="description"]'):
+			item["desc"]=str(response.xpath('//meta[@name="description"]/@content').extract()[0])
+
 		yield item
