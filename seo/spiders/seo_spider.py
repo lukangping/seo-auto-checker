@@ -4,7 +4,7 @@ import csv
 import sys  
 
 reload(sys)  
-sys.setdefaultencoding('utf8')  
+sys.setdefaultencoding('utf-8')  
 
 from seo.items import SeoItem, ExpectedSeo
 
@@ -15,7 +15,7 @@ class SeoSpider(scrapy.Spider):
 	def __init__(self, *args, **kwargs): 
 		super(SeoSpider, self).__init__(*args, **kwargs) 		
 		
-		reader = csv.reader(open("seo/csv/demo.csv"), delimiter=";")
+		reader = csv.reader(open("seo/csv/#353.csv"), delimiter=";")
 		for url,title,h1,desc in reader:
 			self.start_urls.append(str(url))
 
