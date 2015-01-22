@@ -7,7 +7,7 @@ class SeoVerifyPipeline(object):
 	expected_seos = {}
 
 	def __init__(self):
-		reader = csv.reader(open("seo/csv/#353.csv"), delimiter=";")
+		reader = csv.reader(open("seo/csv/#354-1.csv"), delimiter=",")
 		for url,title,h1,desc in reader:
 			seo = ExpectedSeo(url, title, h1, desc)
 			self.expected_seos[str(url)] = seo
@@ -21,7 +21,7 @@ class SeoVerifyPipeline(object):
 			parsed_desc = "blank"
 
 		expected_title = self.expected_seos[item["url"]].title
-		expected_h1 = "Annunci immobiliari: " + self.expected_seos[item["url"]].h1
+		expected_h1 = self.expected_seos[item["url"]].h1
 		expected_desc = self.expected_seos[item["url"]].desc
 
 		if parsed_title != expected_title:
@@ -30,7 +30,7 @@ class SeoVerifyPipeline(object):
 			print "title expected :" + expected_title.encode('utf-8') + "."
 			print "title wrong url:" + item["url"].encode('utf-8')
 		
-		if parsed_h1 != expected_h1:
+		if not expected_h1 in parsed_h1:
 			print "------"
 			print "h1 parsed   :" + item["h1"].encode('utf-8') + "."
 			print "h1 expected :" + expected_h1.encode('utf-8') + "."
